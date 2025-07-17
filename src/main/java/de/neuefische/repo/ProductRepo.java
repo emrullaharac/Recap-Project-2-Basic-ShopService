@@ -20,8 +20,8 @@ public class ProductRepo {
         products.remove(id);
     }
 
-    public Product getProductById(String id) {
-        return products.get(id);
+    public Optional<Product> getProductById(String id) {
+        return Optional.ofNullable(products.get(id));
     }
 
     public List<Product> getAllProducts() {

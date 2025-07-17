@@ -19,27 +19,31 @@ public class ShopService {
         this.orderRepo = orderRepo;
     }
 
-    public Product getProductById(String id) {
+    public Optional<Product> getProductById(String id) {
         return productRepo.getProductById(id);
-    };
+    }
 
     public void listProducts() {
         for (Product product : productRepo.getAllProducts()) {
             System.out.println(product);
         }
-    };
+    }
 
     public void addOrder(List<OrderItem> items) {
         orderRepo.addOrder(items);
-    };
+    }
+
+    public List<Order> getAllOrders() {
+        return orderRepo.getAllOrders();
+    }
 
     public Optional<Order> getOrderById(String id) {
         return orderRepo.getOrderById(id);
-    };
+    }
 
     public void listOrders() {
         for (Order order : orderRepo.getAllOrders()) {
             System.out.println(order);
         }
-    };
+    }
 }
