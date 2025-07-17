@@ -2,7 +2,6 @@ package de.neuefische.repo;
 
 import de.neuefische.model.Order;
 import de.neuefische.model.OrderItem;
-import de.neuefische.model.Product;
 
 import java.util.*;
 
@@ -13,6 +12,10 @@ public class OrderMapRepo implements OrderRepoInterface {
     public void addOrder(List<OrderItem> items) {
         Order newOrder = new Order(UUID.randomUUID().toString(), items);
         orders.put(newOrder.id(), newOrder);
+    }
+
+    public void addOrder(Order order) {
+        orders.put(order.id(), order);
     }
 
     @Override
