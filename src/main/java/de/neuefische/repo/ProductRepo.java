@@ -2,17 +2,13 @@ package de.neuefische.repo;
 
 import de.neuefische.model.Product;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProductRepo {
-    private final Map<Integer, Product> products = new LinkedHashMap<>();
-    private int nextProductId = 1;
+    private final Map<String, Product> products = new LinkedHashMap<>();
 
     public void addProduct(String productName) {
-        Product product = new Product(nextProductId++, productName);
+        Product product = new Product(UUID.randomUUID().toString(), productName);
         products.put(product.id(), product);
     }
 
@@ -20,11 +16,11 @@ public class ProductRepo {
         products.put(product.id(), product);
     }
 
-    public void removeProductById(int id) {
+    public void removeProductById(String id) {
         products.remove(id);
     }
 
-    public Product getProductById(int id) {
+    public Product getProductById(String id) {
         return products.get(id);
     }
 

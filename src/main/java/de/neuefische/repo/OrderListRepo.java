@@ -3,16 +3,14 @@ package de.neuefische.repo;
 import de.neuefische.model.Order;
 import de.neuefische.model.Product;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class OrderListRepo implements OrderRepoInterface {
     private List<Order> orders = new ArrayList<>();
-    private int nextOrderId = 1;
 
     @Override
     public void addOrder(List<Product> products) {
-        Order newOrder = new Order(nextOrderId++, products);
+        Order newOrder = new Order(UUID.randomUUID().toString(), products);
         orders.add(newOrder);
     }
 
@@ -22,14 +20,14 @@ public class OrderListRepo implements OrderRepoInterface {
     }
 
     @Override
-    public void removeOrderById(int id) {
-        orders.removeIf(order -> order.id() == id);
+    public void removeOrderById(String id) {
+        orders.removeIf(order -> Objects.equals(order.id(), id));
     }
 
     @Override
-    public Order getOrderById(int id) {
+    public Optional<Order> getOrderById(String id) {
         for (Order order : orders) {
-            if (order.id() == id) {
+            if (Objects.equals(order.id(), id)) {
                 return order;
             }
         }

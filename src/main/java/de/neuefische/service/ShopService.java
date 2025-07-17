@@ -7,17 +7,18 @@ import de.neuefische.repo.OrderRepoInterface;
 import de.neuefische.repo.ProductRepo;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ShopService {
-    private ProductRepo productRepo;
-    private OrderRepoInterface orderRepo;
+    private final ProductRepo productRepo;
+    private final OrderRepoInterface orderRepo;
 
     public ShopService(ProductRepo productRepo, OrderMapRepo orderRepo) {
         this.productRepo = productRepo;
         this.orderRepo = orderRepo;
     }
 
-    public Product getProductById(int id) {
+    public Product getProductById(String id) {
         return productRepo.getProductById(id);
     };
 
@@ -31,7 +32,7 @@ public class ShopService {
         orderRepo.addOrder(products);
     };
 
-    public Order getOrderById(int id) {
+    public Optional<Order> getOrderById(String id) {
         return orderRepo.getOrderById(id);
     };
 
