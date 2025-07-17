@@ -1,6 +1,7 @@
 package de.neuefische.repo;
 
 import de.neuefische.model.Order;
+import de.neuefische.model.OrderItem;
 import de.neuefische.model.Product;
 
 import java.util.*;
@@ -9,8 +10,8 @@ public class OrderMapRepo implements OrderRepoInterface {
     private final Map<String, Order> orders = new LinkedHashMap<>();
 
     @Override
-    public void addOrder(List<Product> products) {
-        Order newOrder = new Order(UUID.randomUUID().toString(), products);
+    public void addOrder(List<OrderItem> items) {
+        Order newOrder = new Order(UUID.randomUUID().toString(), items);
         orders.put(newOrder.id(), newOrder);
     }
 

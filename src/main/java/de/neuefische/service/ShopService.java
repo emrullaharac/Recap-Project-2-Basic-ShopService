@@ -1,6 +1,7 @@
 package de.neuefische.service;
 
 import de.neuefische.model.Order;
+import de.neuefische.model.OrderItem;
 import de.neuefische.model.Product;
 import de.neuefische.repo.OrderMapRepo;
 import de.neuefische.repo.OrderRepoInterface;
@@ -28,8 +29,8 @@ public class ShopService {
         }
     };
 
-    public void addOrder(List<Product> products) {
-        orderRepo.addOrder(products);
+    public void addOrder(List<OrderItem> items) {
+        orderRepo.addOrder(items);
     };
 
     public Optional<Order> getOrderById(String id) {

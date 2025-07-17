@@ -1,5 +1,14 @@
 package de.neuefische.model;
 
+import lombok.With;
+
 import java.util.List;
 
-public record Order(String id, List<Product> products) { }
+@With
+public record Order(String id, List<OrderItem> items) {
+    public double getTotalPrice() {
+        return items.stream()
+                .mapToDouble(o -> o.quantity() * o.product().price())
+                .sum();
+    }
+}

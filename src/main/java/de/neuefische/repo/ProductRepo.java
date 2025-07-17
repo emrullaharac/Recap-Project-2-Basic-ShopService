@@ -8,7 +8,7 @@ public class ProductRepo {
     private final Map<String, Product> products = new LinkedHashMap<>();
 
     public void addProduct(String productName) {
-        Product product = new Product(UUID.randomUUID().toString(), productName);
+        Product product = new Product(UUID.randomUUID().toString(), productName, 0.0);
         products.put(product.id(), product);
     }
 
